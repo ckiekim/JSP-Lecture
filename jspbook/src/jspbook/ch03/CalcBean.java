@@ -1,5 +1,5 @@
 package jspbook.ch03;
-
+ 
 public class CalcBean {
 	private int  num1, num2;
 	private String operator="";
