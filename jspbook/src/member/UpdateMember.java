@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class RegisterProc
+ * Servlet implementation class UpdateMember
  */
-@WebServlet("/member/registerProcServlet")
-public class RegisterProc extends HttpServlet {
+@WebServlet("/member/updateMemberServlet")
+public class UpdateMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public RegisterProc() {
+    public UpdateMember() {
         super();
     }
 
@@ -24,15 +24,16 @@ public class RegisterProc extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String password = request.getParameter("password");
+		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		String birthday = request.getParameter("birthday");
 		String address = request.getParameter("address");
-		MemberDTO member = new MemberDTO(password, name, birthday, address);
+		
+		MemberDTO member = new MemberDTO(id, "*", name, birthday, address);
 		System.out.println(member.toString());
 		
 		MemberDAO mDao = new MemberDAO();
-		mDao.insertMember(member);
+		mDao.updateMember(member);
 		mDao.close();
 		
 		response.sendRedirect("loginMain.jsp");
