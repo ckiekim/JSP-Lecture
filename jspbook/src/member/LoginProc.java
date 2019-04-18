@@ -52,14 +52,14 @@ public class LoginProc extends HttpServlet {
 		if (result == MemberDAO.ID_PASSWORD_MATCH) {
 			response.sendRedirect("loginMain.jsp");
 		} else {
-			// 방법 1
-			String uri = "login.jsp?error=" + errorMessage;
+			// 방법 1 - 상대방이 getParameter("error")로 받을 때
+			/*String uri = "login.jsp?error=" + errorMessage;
 			RequestDispatcher dispatcher = request.getRequestDispatcher(uri); 
-			dispatcher.forward(request, response);
-			// 방법 2
-			/*request.setAttribute("error", errorMessage);
+			dispatcher.forward(request, response);*/
+			// 방법 2 - 상대방이 getAttribute("error")로 받을 때
+			request.setAttribute("error", errorMessage);
 			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-	        rd.forward(request, response);*/
+	        rd.forward(request, response);
 	        // pageContext.forward("login.jsp");
 		}
 	}

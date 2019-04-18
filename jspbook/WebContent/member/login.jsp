@@ -30,7 +30,7 @@
 <body>
 <%
 	//request.setCharacterEncoding("UTF-8");
-	String error = request.getParameter("error");
+	String error = (String) request.getAttribute("error");
 	if (error != null) {
 		System.out.println(error);
 		out.println("<script>alert('" + error + "')</script>");
