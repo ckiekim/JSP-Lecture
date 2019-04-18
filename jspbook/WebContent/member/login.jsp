@@ -31,15 +31,15 @@
 <%
 	//request.setCharacterEncoding("UTF-8");
 	String error = request.getParameter("error");
-	System.out.println(error);
 	if (error != null) {
+		System.out.println(error);
 		out.println("<script>alert('" + error + "')</script>");
 	}
 %>
 	<center><br>
 	<h3>Member Login</h3><br>
 	<hr>
-	<form name="loginForm" action=/jspbook/member/loginProc.jsp method=post>
+	<form name="loginForm" action=/jspbook/member/loginProcServlet method=post>
 		<label><span>ID:</span>
 			<input type="text" name="id" size="10"></label>
 		<label><span>Password:</span>
