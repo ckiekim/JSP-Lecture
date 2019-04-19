@@ -28,7 +28,7 @@ public class MemberDAO {
     }
     
 	public int verifyIdPassword(int id, String password) {
-		System.out.println("verifyIdPassword(): " + id + ", " + password);
+		//System.out.println("verifyIdPassword(): " + id + ", " + password);
 		String query = "select hashed from member where id=?;";
 		PreparedStatement pStmt = null;
 		ResultSet rs = null;

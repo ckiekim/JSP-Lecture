@@ -29,9 +29,9 @@ public class LoginProc extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		int id = 0;
-		String strId = request.getParameter("id");
-		if (!strId.equals(""))
-			id = Integer.parseInt(strId);
+		if (!request.getParameter("id").equals("")) {
+			id = Integer.parseInt(request.getParameter("id"));
+		}
 		String password = request.getParameter("password");
 
 		MemberDAO mDao = new MemberDAO();
