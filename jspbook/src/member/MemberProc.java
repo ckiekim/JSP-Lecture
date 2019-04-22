@@ -40,6 +40,7 @@ public class MemberProc extends HttpServlet {
 		String birthday = null;
 		String address = null;
 		String message = null;
+		String url = null;
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
@@ -51,7 +52,7 @@ public class MemberProc extends HttpServlet {
 			}
 			if (id != (Integer)session.getAttribute("memberId")) {
 				message = "id = " + id + " 에 대한 수정 권한이 없습니다.";
-				String url = "loginMain.jsp";
+				url = "loginMain.jsp";
 				request.setAttribute("message", message);
 				request.setAttribute("url", url);
 				rd = request.getRequestDispatcher("alertMsg.jsp");
@@ -72,7 +73,7 @@ public class MemberProc extends HttpServlet {
 			}
 			if (id != (Integer)session.getAttribute("memberId")) {
 				message = "id = " + id + " 에 대한 삭제 권한이 없습니다.";
-				String url = "loginMain.jsp";
+				url = "loginMain.jsp";
 				request.setAttribute("message", message);
 				request.setAttribute("url", url);
 				rd = request.getRequestDispatcher("alertMsg.jsp");
@@ -84,7 +85,7 @@ public class MemberProc extends HttpServlet {
 			mDao.close();
 			//response.sendRedirect("loginMain.jsp");
 			message = "id = " + id + " 이/가 삭제되었습니다.";
-			String url = "loginMain.jsp";
+			url = "loginMain.jsp";
 			request.setAttribute("message", message);
 			request.setAttribute("url", url);
 			rd = request.getRequestDispatcher("alertMsg.jsp");
@@ -139,9 +140,17 @@ public class MemberProc extends HttpServlet {
 			
 			mDao = new MemberDAO();
 			mDao.insertMember(member);
-			mDao.close();
+			member = mDao.recentId();
+			session.setAttribute("memberId", member.getId());
+			session.setAttribute("memberName", name);
 			
-			response.sendRedirect("loginMain.jsp");
+			message = "귀하의 아이디는 " + member.getId() + " 입니다.";
+			url = "loginMain.jsp";
+			request.setAttribute("message", message);
+			request.setAttribute("url", url);
+			rd = request.getRequestDispatcher("alertMsg.jsp");
+			rd.forward(request, response);
+			mDao.close();
 			break;
 			
 		case "execute":			// 회원 수정정보 입력 후 실행할 때
