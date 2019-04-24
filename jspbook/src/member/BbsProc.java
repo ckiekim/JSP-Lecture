@@ -120,7 +120,7 @@ public class BbsProc extends HttpServlet {
 			}
 			bDao = new BbsDAO();
 			bDto = bDao.selectOne(id);
-			if (bDto.getMemberId() != (Integer)session.getAttribute("memberId")) {
+			if (bDto.getMemberId() != memberId) {
 				message = "id = " + id + " 에 대한 수정 권한이 없습니다.";
 				url = "bbsServlet?action=list&page=1";
 				request.setAttribute("message", message);

@@ -38,13 +38,6 @@
 		</td></tr>
 		</form>
 	</table>
-	<br>
-	<%
-		String updateUri = "bbsServlet?action=update&id=" + bm.getId();
-		String deleteUri = "bbsServlet?action=delete&id=" + bm.getId();
-	%>
-	<button onclick="location.href='<%=updateUri%>'">수정</button>&nbsp;&nbsp;
-	<button onclick="location.href='<%=deleteUri%>'">삭제</button>&nbsp;&nbsp;
 	<a href="bbsServlet?action=list&page=<%=(int)session.getAttribute("currentBbsPage")%>">목록으로</a>
 	</center>
 </body>
