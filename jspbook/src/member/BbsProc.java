@@ -77,7 +77,10 @@ public class BbsProc extends HttpServlet {
 			page = "<a href=#>&laquo;</a>&nbsp;";
 			pageList.add(page);
 			for (int i=1; i<=pageNo; i++) {
-				page = "&nbsp;<a href=bbsServlet?action=list&page=" + i + ">" + i + "</a>&nbsp;";
+				if (curPage == i)
+					page = "&nbsp;" + i + "&nbsp;";
+				else
+					page = "&nbsp;<a href=bbsServlet?action=list&page=" + i + ">" + i + "</a>&nbsp;";
 				pageList.add(page);
 			}
 			page = "&nbsp;<a href=#>&raquo;</a>";

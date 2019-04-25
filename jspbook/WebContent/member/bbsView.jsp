@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, member.*" %> 
+<%@ page import="java.util.*, member.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,7 +25,7 @@
 	<hr>
 	<c:set var="bm" value="${requestScope.bbsMember}"/>
 	<table border="1" style="border-collapse:collapse;" width="500">
-	<tr bgcolor="skyblue"><th height="30" width="80">항목</th><th>내용</th></tr>
+		<tr bgcolor="skyblue"><th height="30" width="80">항목</th><th>내용</th></tr>
 		<tr><td height="25">번호</td><td>${bm.id}</td></tr>
 		<tr><td height="25">제목</td><td>${bm.title}</td></tr>
 		<tr><td height="25">글쓴이</td><td>${bm.name}</td></tr>

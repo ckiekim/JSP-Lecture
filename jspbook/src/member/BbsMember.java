@@ -1,7 +1,7 @@
 package member;
 
 public class BbsMember {
-	private int id;
+	private int id; 
 	private String title;
 	private String name;
 	private String date;

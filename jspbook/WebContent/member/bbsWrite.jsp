@@ -26,10 +26,10 @@
 			<input type="text" name="title" size="40"></label>
 		<label><span>내용:</span>
 			<textarea name="content" rows="10" cols="42"></textarea></label>	
-
-		<label><span></span>&nbsp;&nbsp;<input type="submit" value="글 쓰기" name="W1">&nbsp;&nbsp;
+		<label><span></span>&nbsp;&nbsp;
+			<input type="submit" value="글 쓰기" name="W1">&nbsp;&nbsp;
 			<input type="reset" value="재작성" name="W2">&nbsp;&nbsp;
-			<a href="bbsServlet?action=list&page=<%=(int)session.getAttribute("currentBbsPage")%>">목록으로</a></label>
+			<a href="bbsServlet?action=list&page=${currentBbsPage}">목록으로</a></label>
 	</form>
 </body>
 </html>

@@ -32,8 +32,8 @@
 		<tr><td height="25">수정일시</td><td>${bm.date}</td></tr>
 		<tr><td height="100">내용</td><td><textarea name="content" rows="10" cols="42">${bm.content}</textarea></td></tr>
 		<tr><td colspan="2" height="30">
-				<input type="submit" value="수정하기" name="U1">&nbsp;&nbsp;
-				<input type="reset" value="재작성" name="U2"></label>
+			<input type="submit" value="수정하기" name="U1">&nbsp;&nbsp;
+			<input type="reset" value="재작성" name="U2"></label>
 		</td></tr>
 		</form>
 	</table>
