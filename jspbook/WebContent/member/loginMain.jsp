@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*"%>
 <%@ page import="member.*" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	MemberDAO mDao = new MemberDAO();
 	List<MemberDTO> list = mDao.selectAll();
@@ -29,7 +30,7 @@
 	<%=(String)session.getAttribute("memberName")%> 회원님 반갑습니다.<br>
 	<a href="bbsServlet?action=list&page=1">게시판</a>&nbsp;&nbsp;
 	<a href="twitter_list.jsp">트윗</a>&nbsp;&nbsp;
-	<a href="/jspbook/member/memberProcServlet?action=logout">로그아웃</a>
+	<a href="memberProcServlet?action=logout">로그아웃</a>
 	<hr>
 	<table border="1" style="border-collapse:collapse;" height=300, width=600>
 	<tr bgcolor="pink"><th>아이디</th><th>이름</th><th>생일</th><th>주소</th><th>액션</th></tr>
