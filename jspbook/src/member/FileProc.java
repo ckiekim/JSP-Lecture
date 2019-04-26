@@ -27,28 +27,54 @@ public class FileProc extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LOG.trace("");
+		File file = null;
 		FileInputStream fis = null;
 		BufferedOutputStream bos = null;
 		BufferedInputStream bis = null;
+		String sb = null;
 		int length;
+		String action = request.getParameter("action");
 		
-		MemberDAO mDao = new MemberDAO();
-		String sb = mDao.prepareDownload();
 		String client = request.getHeader("User-Agent");
 		// 파일 다운로드 헤더 지정
 		response.reset() ;
 		response.setContentType("application/octet-stream");
 		response.setHeader("Content-Description", "JSP Generated Data");
 		
-		if(client.indexOf("MSIE") != -1) {		// Internet Explorer
-			response.setHeader ("Content-Disposition", "attachment; filename=ClientMemberList.csv");
-		} else {			// IE 이외
-			response.setHeader("Content-Disposition", "attachment; filename=\"ClientMemberList.csv\"");
-			response.setHeader("Content-Type", "application/octet-stream; charset=utf-8");
+		switch(action) {
+		case "member":
+			MemberDAO mDao = new MemberDAO();
+			sb = mDao.prepareDownload();
+			mDao.close();
+			
+			if(client.indexOf("MSIE") != -1) {		// Internet Explorer
+				response.setHeader ("Content-Disposition", "attachment; filename=ClientMemberList.csv");
+			} else {			// IE 이외
+				response.setHeader("Content-Disposition", "attachment; filename=\"ClientMemberList.csv\"");
+				response.setHeader("Content-Type", "application/octet-stream; charset=utf-8");
+			}
+			file = new File("C:/Temp/MemberList.csv");
+			response.setHeader ("Content-Length", "" + file.length());
+			break;
+			
+		case "bbs":
+			BbsDAO bDao = new BbsDAO();
+			sb = bDao.prepareDownload();
+			bDao.close();
+			
+			if(client.indexOf("MSIE") != -1) {		// Internet Explorer
+				response.setHeader ("Content-Disposition", "attachment; filename=ClientBbsMemberList.csv");
+			} else {			// IE 이외
+				response.setHeader("Content-Disposition", "attachment; filename=\"ClientBbsMemberList.csv\"");
+				response.setHeader("Content-Type", "application/octet-stream; charset=utf-8");
+			}
+			file = new File("C:/Temp/BbsMemberList.csv");
+			response.setHeader ("Content-Length", "" + file.length());
+			break;
+			
+		default:
 		}
-		File file = new File("C:/Temp/MemberList.csv");
-		response.setHeader ("Content-Length", "" + file.length());
+
 		try {
 			fis = new FileInputStream(file);
 			bis = new BufferedInputStream(fis);

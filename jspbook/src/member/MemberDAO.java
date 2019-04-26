@@ -44,13 +44,13 @@ public class MemberDAO {
 			String head = "아이디,이름,생년월일,주소\r\n";
 			sb.append(head);
 			fw.write(head);
-			LOG.debug(head);
+			LOG.debug(head.substring(0, head.length()-2));
 			for (MemberDTO mDto : mList) {
 				String line = mDto.getId() + "," + mDto.getName() + "," 
 						+ mDto.getBirthday() + "," + mDto.getAddress() + "\r\n";
 				sb.append(line);
 				fw.write(line);
-				LOG.debug(line);
+				LOG.debug(line.substring(0, line.length()-2));
 			}
 			fw.flush();
 			fw.close();
