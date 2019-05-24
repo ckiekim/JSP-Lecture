@@ -8,9 +8,9 @@ public class JsonMIx {
 		// JSON DATA 는 가장 아래 단계에서 부터 만들어 나간다.
 		System.out.println("----------------------------------------------");
 		System.out.println("JSON String 생성");
-		JSONObject jObject = new JSONObject();
-		jObject.put("name", "유혁");
-		jObject.put("age", 40);
+		JSONObject jObj = new JSONObject();
+		jObj.put("name", "홍길동");		// String name = "홍길동";
+		jObj.put("age", 40);			// int age = 40;
 		
 		JSONArray jArray = new JSONArray();
 		JSONObject school = new JSONObject();
@@ -20,21 +20,21 @@ public class JsonMIx {
 		school = new JSONObject();
 		school.put("subject", "국어");
 		jArray.add(school);
-		jObject.put("school", jArray);
+		jObj.put("school", jArray);
 		
-		System.out.println(jObject.toString());
+		System.out.println(jObj.toString());
 		
 		System.out.println("----------------------------------------------");
 		System.out.println("JSON String 파싱");
 		try {
-			JSONArray returnSchool = (JSONArray) jObject.get("school");
+			JSONArray returnSchool = (JSONArray) jObj.get("school");
 			System.out.println("Size= " + returnSchool.size());
 			for (int i=0; i<returnSchool.size(); i++) {
 				JSONObject returnSubject = (JSONObject) returnSchool.get(i);
 				System.out.println("subject : " + returnSubject.get("subject"));
 			}
-			int age = (Integer) jObject.get("age");
-			String name = (String) jObject.get("name");
+			int age = (Integer) jObj.get("age");
+			String name = (String) jObj.get("name");
 			System.out.println("name = " + name);
 			System.out.println("age = " + age);
 		} catch(Exception e) {

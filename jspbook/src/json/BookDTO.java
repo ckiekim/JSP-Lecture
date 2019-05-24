@@ -10,7 +10,6 @@ public class BookDTO {
 	public BookDTO() {
 	}
 	public BookDTO(String name, String writer, int price, String genre, String publisher) {
-		super();
 		this.name = name;
 		this.writer = writer;
 		this.price = price;

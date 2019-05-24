@@ -8,7 +8,7 @@ public class JsonArray {
 		// JSON DATA 는 가장 아래 단계에서 부터 만들어 나간다.
 		System.out.println("----------------------------------------------");
 		System.out.println("JSON String 생성");
-		JSONObject jObject = new JSONObject();
+		JSONObject jObj = new JSONObject();
 		
 		JSONArray jArray = new JSONArray();
 		JSONObject school = new JSONObject();
@@ -18,14 +18,14 @@ public class JsonArray {
 		school = new JSONObject();
 		school.put("subject", "국어");
 		jArray.add(school);
-		jObject.put("school", jArray);
+		jObj.put("school", jArray);
 		
-		System.out.println(jObject.toString());
+		System.out.println(jObj.toString());
 		
 		System.out.println("----------------------------------------------");
 		System.out.println("JSON String 파싱");
 		try {
-			JSONArray returnSchool = (JSONArray) jObject.get("school");
+			JSONArray returnSchool = (JSONArray) jObj.get("school");
 			System.out.println("Size= " + returnSchool.size());
 			for (int i=0; i<returnSchool.size(); i++) {
 				JSONObject returnSubject = (JSONObject) returnSchool.get(i);
